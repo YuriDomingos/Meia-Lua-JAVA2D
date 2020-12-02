@@ -28,6 +28,7 @@ public class Cenario extends JPanel  {
     protected Graphics2D graphics2D;
     protected Area General_area = null;  
     protected Area Temporary    = null;
+    
     private Lua lua = new Lua(10,10,10,10);
     
     
@@ -41,19 +42,19 @@ public class Cenario extends JPanel  {
         
         graphics2D = (Graphics2D) g.create();
         
+        
+        
+        //--- Key_antialiasing permite acabar o desenho perfeitamente 
+        
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
        
-          // desenho da primeira área
+         
         Shape area1 = new Ellipse2D.Double(lua.getPosX()+100,lua.getPosY()+100,lua.getWidth()+160,lua.getHeight()+160); 
         
-      
-        
-        // graphics2D.fill(area1);
-        
-        // desenho segunda área
         Shape area2 = new Ellipse2D.Double(lua.getPosX()+50,lua.getPosY()+100,lua.getWidth()+160,lua.getHeight()+160);
         
-        //\ Adicionei a área 1 na nossa área principal 
+        // Adicionei a área 1 na nossa área principal 
+        
         General_area  = new Area(area1);
         
         
@@ -62,15 +63,12 @@ public class Cenario extends JPanel  {
         
         
         
-        // subtraimos
+        //  Subtraimos 
         General_area.subtract(Temporary);
-        
-        
-        // desenhamos a nossa área principal
         
         graphics2D.fill(General_area);
          
-         graphics2D.dispose();
+        graphics2D.dispose();
         
     }
     
